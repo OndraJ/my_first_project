@@ -41,6 +41,8 @@ upper_words = 0
 integers = []
 dict_of_numbers = {}
 
+
+
 username = input('username: ')
 password = input('password: ')
 
@@ -68,15 +70,17 @@ There are {upper_words} uppercase words.
 There are {lower_words} lowercase words.
 There are {len(integers)} numeric strings.
 The sum of all the numbers {sum(integers)}
-''',
-line,'LEN |    OCCURENCES   |NR.',line,sep='\n')
+''')
     for word in clear_text:
         if len(word) not in dict_of_numbers:
             dict_of_numbers[len(word)] = 1
         else:
             dict_of_numbers[len(word)] += 1
         new_dict = dict(sorted(dict_of_numbers.items()))
+    
+    print(
+'LEN|','OCCURENCES'.center(max(new_dict.values())),'|NR.')
     for k, v in new_dict.items():
-        print(str(k).rjust(3,' '),'|',(v * '*').ljust(15,' '),'|', str(v))
+        print(str(k).rjust(2,' '),'|',(v * '*').ljust(max(new_dict.values())),'|', str(v))
 else:
     print('Unregistred user, terminating program....')
